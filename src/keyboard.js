@@ -17,7 +17,7 @@ class Keyboard {
       x: () => hero.moveRight(),
       space: () => {
        this.hero.boomerang.position = this.hero.position;
-       return setInterval(() => this.hero.boomerang.moveRight(), 50)
+       return setInterval(() => this.hero.boomerang.fly(), 50)
       }
     };
   }
