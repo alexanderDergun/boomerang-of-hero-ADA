@@ -2,7 +2,7 @@
 
 class View {
   // constructor ()
-  render (arr) {
+  render(arr) {
     const yourTeamName = 'Elbrus';
 
     // Тут всё рисуем.
