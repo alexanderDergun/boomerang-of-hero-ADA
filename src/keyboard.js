@@ -11,13 +11,12 @@ const Boomerang = require('./game-models/Boomerang');
 class Keyboard {
   constructor(hero) {
     this.hero = hero;
-    // this.boomerang = boomerang;
     this.keyboard = {
       z: () => hero.moveLeft(),
       x: () => hero.moveRight(),
       space: () => {
         this.hero.boomerang.boomerangFly = true;
-       this.hero.boomerang.position = this.hero.position;
+        this.hero.boomerang.position = this.hero.position;
        return setInterval(() => this.hero.boomerang.fly(), 100)
       }
     };
