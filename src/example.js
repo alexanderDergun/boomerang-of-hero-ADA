@@ -12,7 +12,7 @@ keypress(process.stdin);
 function runInteractiveConsole() {
 
 process.stdin.on('keypress', (ch, key) => {
-  console.log(key)
+  console.log(key.name)
   // console.log(ch)
 })
 }
