@@ -40,9 +40,14 @@ class Game {
       this.hero.boomerang.moveLeft();
       // this.enemy = new Enemy();
     }
+    if (this.hero.position > this.hero.boomerang.position) {
+      this.hero.boomerang.position = this.hero.position - 1
+    }
+
     if (this.enemy.position <= this.hero.boomerang.position) {
       this.hero.boomerang.moveLeft();
       this.enemy.die();
+      this.hero.boomerang.boomerangFly = false;
       this.enemy = new Enemy();
     }
   }
@@ -53,13 +58,7 @@ class Game {
       this.check();
       this.regenerateTrack();
       this.view.render(this.track);
-      // console.log(this.enemy);
-      // console.log(this.hero);
-      // console.log(this.track);
       this.enemy.moveLeft();
-      // this.hero.boomerang.fly();
-      // this.hero.attack();
-      // this.hero.moveRight();
     }, 200);
     this.keyboard.runInteractiveConsole();
   }
