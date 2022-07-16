@@ -13,7 +13,11 @@ const runInteractiveConsole = require('./keyboard');
 class Game {
   constructor({ trackLength }) {
     this.trackLength = trackLength;
+<<<<<<< HEAD
     this.hero = new Hero(); // Герою можно аргументом передать бумеранг.
+=======
+    this.hero = new Hero({ position: 5 }); // Герою можно аргументом передать бумеранг.
+>>>>>>> origin/dev
     this.enemy = new Enemy();
     this.view = new View();
     this.track = [];
@@ -26,7 +30,11 @@ class Game {
 
     this.track = (new Array(this.trackLength)).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
+<<<<<<< HEAD
     this.track[this.enemy.position] = this.enemy.skin;
+=======
+    console.log(this.track);
+>>>>>>> origin/dev
   }
 
   check() {
@@ -42,13 +50,16 @@ class Game {
       this.check();
       this.regenerateTrack();
       this.view.render(this.track);
-      this.enemy.moveLeft();
+<<<<<<< HEAD
       // this.hero.moveLeft();
       // this.hero.moveRight();
       // this.hero.attack();
       // this.hero.die();
       
-    }, 150);
+  
+=======
+    }, 100);
+>>>>>>> origin/dev
   }
 }
 
