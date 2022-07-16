@@ -1,7 +1,20 @@
+const keypress = require('keypress');
 
 
 
-process.stdin.on('data', data => {
-  console.log(`You typed ${data.toString()}`);
-  process.exit();
-});
+// process.stdin.on('keypress', (char, key) => {
+//   console.log(`You typed ${data.toString()}`);
+//   process.exit();
+// });
+
+keypress(process.stdin);
+
+function runInteractiveConsole() {
+
+process.stdin.on('keypress', (ch, key) => {
+  console.log(key)
+  // console.log(ch)
+})
+}
+
+runInteractiveConsole();

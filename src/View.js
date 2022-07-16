@@ -2,12 +2,6 @@
 const Game = require('./Game');
 
 class View {
-  // constructor ()
-  // constructor() {
-  //   // const game = new Game()
-  //   // this.game = new Game();
-  // }
-
   render(arr) {
     const yourTeamName = 'Elbrus';
 
