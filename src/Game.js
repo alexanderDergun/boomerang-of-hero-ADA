@@ -20,7 +20,14 @@ class Game {
     this.track = [];
     this.regenerateTrack();
     this.keyboard = new Keyboard(this.hero);
+    this.count = 0;
+    this.timer = 0;
   }
+
+  // timeCount() {
+  //  let r = setInterval(() => { this.timer + 1 }, 1000)
+  //   return r;
+  // }
 
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
@@ -35,18 +42,32 @@ class Game {
   }
 
   check() {
-    if (this.hero.position === this.enemy.position) {
+    if (this.hero.position >= this.enemy.position + 1) {
+      this.enemy.skin = ' '
+      // console.log(this.enemy.skin);
+      this.hero.skin = '💀'
       this.hero.die();
-      this.hero.boomerang.moveLeft();
+
+
+      // this.hero.boomerang.moveLeft();
       // this.enemy = new Enemy();
     }
+    if (this.hero.position > this.hero.boomerang.position) {
+      this.hero.boomerang.position = this.hero.position - 1
+    }
+
     if (this.enemy.position <= this.hero.boomerang.position) {
+
       this.hero.boomerang.moveLeft();
       this.enemy.die();
       this.hero.boomerang.moveLeft();
+
       this.enemy = new Enemy();
+      this.count += 1;
+      // this.enemy.die();
     }
   }
+
 
   play() {
     setInterval(() => {
@@ -54,14 +75,13 @@ class Game {
       this.check();
       this.regenerateTrack();
       this.view.render(this.track);
-      // console.log(this.enemy);
-      // console.log(this.hero);
-      // console.log(this.track);
-      this.enemy.moveLeft();
-      // this.hero.boomerang.fly();
-      // this.hero.attack();
-      // this.hero.moveRight();
-    }, 200);
+      this.view.displayCount(this.count);
+     this.enemy.moveLeft();
+     this.view.timeCount(this.timer)
+
+    }, 100);
+    // this.view.timeCount(this.timer);
+
     this.keyboard.runInteractiveConsole();
   }
 }

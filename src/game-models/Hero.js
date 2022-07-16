@@ -5,7 +5,7 @@ const Boomerang = require('./Boomerang');
 class Hero {
   constructor() {
     this.skin = '🤠'; // можете использовать любые emoji '💃'
-    this.position = 0;
+    this.position = 1;
     this.boomerang = new Boomerang();
   }
 
@@ -27,9 +27,13 @@ class Hero {
 
   die() {
     this.skin = '💀';
+    // console.log('')
     console.log('YOU ARE DEAD!💀');
+
     process.exit();
+
   }
+  // process.exit();
 }
 
 module.exports = Hero;
