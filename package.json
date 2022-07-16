@@ -24,6 +24,7 @@
     "eslint-plugin-import": "^2.26.0"
   },
   "dependencies": {
+    "keypress": "^0.2.1",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.21.3",
