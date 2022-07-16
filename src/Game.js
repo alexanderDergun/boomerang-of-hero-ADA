@@ -49,8 +49,9 @@ class Game {
       this.regenerateTrack();
       this.view.render(this.track);
       console.log(this.enemy);
+      console.log(this.hero);
       this.enemy.moveLeft();
-      this.enemy.moveLeft()
+      // this.hero.moveRight();
     }, 150);
   }
 }

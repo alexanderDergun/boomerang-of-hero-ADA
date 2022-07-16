@@ -3,9 +3,9 @@
 const Boomerang = require('./Boomerang');
 
 class Hero {
-  constructor(position = 6) {
+  constructor() {
     this.skin = '🤠'; // можете использовать любые emoji '💃'
-    this.position = position;
+    this.position = 0;
     this.boomerang = new Boomerang();
   }
 
