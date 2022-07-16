@@ -9,8 +9,10 @@ class Boomerang {
   }
 
   fly() {
+    
     this.moveRight();
-    // this.moveLeft();
+
+    this.moveLeft();
   }
 
   moveLeft() {
