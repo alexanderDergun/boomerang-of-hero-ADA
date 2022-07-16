@@ -19,7 +19,7 @@ class Game {
     this.view = new View();
     this.track = [];
     this.regenerateTrack();
-    this.keyboard = new Keyboard(this.hero)
+    this.keyboard = new Keyboard(this.hero);
   }
 
   regenerateTrack() {
@@ -28,17 +28,21 @@ class Game {
 
     this.track = (new Array(this.trackLength)).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
+    this.track[this.hero.boomerang.position] = this.hero.boomerang.skin;
     this.track[this.enemy.position] = this.enemy.skin;
+
     // console.log(this.track);
   }
 
   check() {
     if (this.hero.position === this.enemy.position) {
       this.hero.die();
+      this.hero.boomerang.moveLeft();
       // this.enemy = new Enemy();
     }
-    if (this.enemy.position === 0) {
-      this.enemy = new Enemy();
+    if (this.enemy.position === this.hero.boomerang.position) {
+      this.hero.boomerang.moveLeft();
+      this.enemy.die();
     }
   }
 
@@ -48,11 +52,14 @@ class Game {
       this.check();
       this.regenerateTrack();
       this.view.render(this.track);
-      console.log(this.enemy);
-      console.log(this.hero);
+      // console.log(this.enemy);
+      // console.log(this.hero);
+      // console.log(this.track);
       this.enemy.moveLeft();
+      // this.hero.boomerang.fly();
+      // this.hero.attack();
       // this.hero.moveRight();
-    }, 150);
+    }, 200);
     this.keyboard.runInteractiveConsole();
   }
 }

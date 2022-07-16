@@ -3,6 +3,7 @@
 // Главное не используй всё вместе!
 
 const keypress = require('keypress');
+const Boomerang = require('./game-models/Boomerang');
 // Управление.
 // Настроим соответствия нажатий на клавиши и действий в игре.
 // console.log(hero);
@@ -14,7 +15,10 @@ class Keyboard {
     this.keyboard = {
       z: () => hero.moveLeft(),
       x: () => hero.moveRight(),
-      q: () => hero.attack(),
+      space: () => {
+       this.boomerang = new Boomerang();
+       return setInterval(() => this.hero.boomerang.moveRight(), 200)
+      }
     };
   }
 
@@ -35,7 +39,5 @@ class Keyboard {
     process.stdin.setRawMode(true);
   }
 }
-
-
 
 module.exports = Keyboard;
