@@ -3,13 +3,19 @@ const Game = require('./Game');
 
 class View {
   displayCount(count) {
-    console.log(`Ваш счет : ${count}`)
-  }
-  displayKill () {
-    console.log('Enemy is DEAD !!!')
-    setTimeout(console.clear(), 5000)
+    console.log(`Ваш счет : ${count}`);
   }
 
+  timeCount(time) {
+    
+    time += 0.1;
+    console.log(time);
+  }
+
+  // displayKill () {
+  //   console.log('Enemy is DEAD !!!')
+  //   setTimeout(console.clear(), 5000)
+  // }
   render(arr) {
     const yourTeamName = 'Elbrus';
 
@@ -17,6 +23,8 @@ class View {
     console.clear();
     console.log(arr.join(''));
     console.log('\n\n');
+
+    // console.log(timeCount(timer) );
     console.log(`Created by "${yourTeamName}" with love`);
   }
 }

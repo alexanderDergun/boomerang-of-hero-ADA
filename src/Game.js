@@ -21,7 +21,13 @@ class Game {
     this.regenerateTrack();
     this.keyboard = new Keyboard(this.hero);
     this.count = 0;
+    this.timer = 0;
   }
+
+  // timeCount() {
+  //  let r = setInterval(() => { this.timer + 1 }, 1000)
+  //   return r;
+  // }
 
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
@@ -51,11 +57,11 @@ class Game {
     }
 
     if (this.enemy.position <= this.hero.boomerang.position) {
-      this.hero.boomerang.moveLeft();
+      // this.hero.boomerang.moveLeft();
       this.hero.boomerang.boomerangFly = false;
       this.enemy = new Enemy();
       this.count += 1;
-      this.enemy.die();
+      // this.enemy.die();
     }
   }
 
@@ -67,8 +73,12 @@ class Game {
       this.regenerateTrack();
       this.view.render(this.track);
       this.view.displayCount(this.count);
-      this.enemy.moveLeft();
+     this.enemy.moveLeft();
+     this.view.timeCount(this.timer)
+
     }, 100);
+    // this.view.timeCount(this.timer);
+
     this.keyboard.runInteractiveConsole();
   }
 }
