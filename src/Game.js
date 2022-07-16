@@ -34,6 +34,7 @@ class Game {
   check() {
     if (this.hero.position === this.enemy.position) {
       this.hero.die();
+      // this.enemy = new Enemy();
     }
     if (this.enemy.position === 0) {
       this.enemy = new Enemy();
@@ -47,11 +48,9 @@ class Game {
       this.check();
       this.regenerateTrack();
       this.view.render(this.track);
+      console.log(this.enemy);
+      this.enemy.moveLeft();
       this.enemy.moveLeft()
-      // this.hero.moveLeft();
-      // this.hero.moveRight();
-      // this.hero.attack();
-      // this.hero.die();
     }, 150);
   }
 }

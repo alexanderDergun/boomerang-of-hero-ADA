@@ -2,16 +2,12 @@
 const Game = require('./Game');
 
 class View {
-  // constructor() {
-  // }
-
   render(arr) {
     const yourTeamName = 'Elbrus';
 
     // Тут всё рисуем.
     console.clear();
     console.log(arr.join(''));
-    // console.log(arr.join('  '));
     console.log('\n\n');
     console.log(`Created by "${yourTeamName}" with love`);
   }
