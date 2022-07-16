@@ -57,8 +57,11 @@ class Game {
     }
 
     if (this.enemy.position <= this.hero.boomerang.position) {
-      // this.hero.boomerang.moveLeft();
-      this.hero.boomerang.boomerangFly = false;
+
+      this.hero.boomerang.moveLeft();
+      this.enemy.die();
+      this.hero.boomerang.moveLeft();
+
       this.enemy = new Enemy();
       this.count += 1;
       // this.enemy.die();
