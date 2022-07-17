@@ -17,7 +17,9 @@ class Enemy {
   }
 
   die() {
-    this.position = '?';
+    // this.life = false
+    // this.position = '?';
+
     console.log('Enemy is dead!');
   }
 }
