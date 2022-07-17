@@ -4,17 +4,6 @@ const Game = require('./Game');
 class View {
   displayCount(count) {
     console.log(`Загублено душ : ${count} \n`);
-
-    // if (count === 1) {
-    //   console.log(`Разрушил : ${count} жизнь..`);
-    // } else if (count >= 2 && count <= 4) {
-    //   console.log(`Разрушил : ${count} жизни..`);
-    // } else if (count > 4) {
-    //   console.log(`Разрушил : ${count} жизней..`);
-    // }
-    // } else {
-    //   console.log(`Разрушил : ${count} жизней..`);
-    // }
   }
 
   // timeCount(time) {
