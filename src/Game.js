@@ -42,9 +42,10 @@ class Game {
   }
 
   check() {
-    if (this.hero.position >= this.enemy.position + 1) {
-      this.enemy.skin = ' '
+    if (this.hero.position > this.enemy.position ) {
       // console.log(this.enemy.skin);
+      this.enemy.position += 1
+      this.enemy.skin = '💀'
       this.hero.skin = '💀'
       this.hero.die();
 
