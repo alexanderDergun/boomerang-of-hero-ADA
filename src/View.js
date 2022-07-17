@@ -7,7 +7,6 @@ class View {
   }
 
   timeCount(time) {
-    
     time += 0.1;
     console.log(time);
   }
