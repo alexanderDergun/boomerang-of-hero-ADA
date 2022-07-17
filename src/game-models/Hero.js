@@ -1,5 +1,6 @@
 // Наш герой.
 
+const { updateScores, inputPlayer, findUser, getScores } = require('../database');
 const Boomerang = require('./Boomerang');
 
 class Hero {
@@ -25,13 +26,16 @@ class Hero {
     this.boomerang.fly();
   }
 
-  die() {
+  async die(name, score) {
     this.skin = '💀';
+    if (await findUser(name)) {
+      if (score > await getScores(name)) await updateScores(score, name);
+    } else { await inputPlayer(name, score); }
+  
     // console.log('')
     console.log('ПОТРАЧЕНО! 💀');
 
     process.exit();
-
   }
   // process.exit();
 }

@@ -15,13 +15,14 @@ class View {
   //   console.log('Enemy is DEAD !!!')
   //   setTimeout(console.clear(), 5000)
   // }
-  render(arr) {
+  render(track, name) {
     const yourTeamName = 'Boomerang-Of-Hero-ADA';
     // Тут всё рисуем.
     console.clear();
-    console.log(arr.join(''));
+    console.log(track.join(''));
     console.log('\n\n');
     console.log(`Created by "${yourTeamName}" with love \n`);
+    console.log(name)
   }
 }
 module.exports = View;

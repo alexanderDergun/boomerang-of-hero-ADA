@@ -4,9 +4,16 @@
 
 const Hero = require('./game-models/Hero');
 const Enemy = require('./game-models/Enemy');
-// const Boomerang = require('./game-models/Boomerang');
 const View = require('./View');
 const Keyboard = require('./keyboard');
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdin,
+})
+// const inputPlayer = require('./database');
+// const updateScores = require('./database');
+// const findUser = require('./database');
 // Основной класс игры.
 // Тут будут все настройки, проверки, запуск.
 
@@ -37,11 +44,11 @@ class Game {
 
   check() {
     if (this.hero.position > this.enemy.position) {
-      this.enemy.skin = '💀'
-      this.enemy.position = this.hero.position ;
-      this.hero.die();
-      // this.hero.boomerang.moveLeft();
-      // this.enemy = new Enemy();
+      this.enemy.skin = '💀';
+      this.enemy.position = this.hero.position;
+      this.die = true;
+      console.log(this.player, this.count);
+      this.hero.die(this.player, this.count);
     }
 
     if (this.enemy.position <= this.hero.boomerang.position) {
@@ -57,13 +64,23 @@ class Game {
     }
   }
 
-  play() {
+  checkName() {
+    return new Promise((res) => {
+      rl.question('ВВЕДИ ИМЯ: ', (answer) => res(answer));
+    });
+  }
+
+  async play() {
+    this.player = await this.checkName();
     setInterval(() => {
-      // Let's play!
-      this.check();
-      this.regenerateTrack();
-      this.view.render(this.track);
       this.enemy.moveLeft();
+    }, 100);
+    
+    const interval = setInterval(() => {
+      this.check();
+      if (this.die) clearInterval(interval);
+      this.regenerateTrack();
+      this.view.render(this.track, this.player);
       this.view.displayCount(this.count);
     }, 200);
     this.keyboard.runInteractiveConsole();
