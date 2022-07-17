@@ -10,12 +10,11 @@ class Boomerang {
   }
 
   fly() {
-
-    
-    this.moveRight();
-
-    this.moveLeft();
-
+    if (this.boomerangFly) {
+      this.moveRight();
+    } else {
+      this.moveLeft();
+    }
   }
 
   moveLeft() {
