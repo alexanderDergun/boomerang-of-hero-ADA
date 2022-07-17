@@ -20,6 +20,7 @@ class Game {
     this.track = [];
     this.regenerateTrack();
     this.keyboard = new Keyboard(this.hero);
+    this.count = 0;
   }
 
   regenerateTrack() {
@@ -36,8 +37,8 @@ class Game {
 
   check() {
     if (this.hero.position > this.enemy.position) {
-      this.enemy.position = this.hero.position ;
       this.enemy.skin = '💀'
+      this.enemy.position = this.hero.position ;
       this.hero.die();
       // this.hero.boomerang.moveLeft();
       // this.enemy = new Enemy();
@@ -47,6 +48,7 @@ class Game {
       this.hero.boomerang.boomerangFly = false;
       this.hero.boomerang.fly();
       this.enemy.die();
+      this.count += 1;
       this.enemy = new Enemy();
     }
 
@@ -61,13 +63,8 @@ class Game {
       this.check();
       this.regenerateTrack();
       this.view.render(this.track);
-      // console.log(this.enemy);
-      // console.log(this.hero);
-      // console.log(this.track);
       this.enemy.moveLeft();
-      // this.hero.boomerang.fly();
-      // this.hero.attack();
-      // this.hero.moveRight();
+      this.view.displayCount(this.count);
     }, 200);
     this.keyboard.runInteractiveConsole();
   }
