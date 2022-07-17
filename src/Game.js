@@ -50,6 +50,7 @@ class Game {
       this.enemy = new Enemy();
     }
 
+
     if (this.hero.boomerang.position < this.hero.position) {
       this.hero.boomerang.position = this.hero.position - 1;
     }
