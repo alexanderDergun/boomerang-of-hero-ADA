@@ -10,5 +10,7 @@ async function testConnection() {
   }
 }
 
+class User extends Sequelize.Model {}
+
 testConnection();
 module.exports = testConnection;
