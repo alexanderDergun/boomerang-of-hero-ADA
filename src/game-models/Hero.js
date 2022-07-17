@@ -30,9 +30,8 @@ class Hero {
     this.skin = '💀';
     if (await findUser(name)) {
       if (score > await getScores(name)) await updateScores(score, name);
-    } else {
-      await inputPlayer(name, score);
-    }
+    } else { await inputPlayer(name, score); }
+  
     // console.log('')
     console.log('ПОТРАЧЕНО! 💀');
 

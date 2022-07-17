@@ -44,13 +44,14 @@ async function findUser(user) {
 async function getScores(name) {
   try {
     const [res] = await sequelize.query(
-      'SELECT scorees FROM players WHERE name = ?',
+      'SELECT * FROM players WHERE name = ?',
       {
         replacements: [name],
       },
     );
-    return res[0].score;
+    return (res[0].scorees);
    } catch (error) {
+    console.log(error.message)
   }
 }
 
@@ -67,7 +68,7 @@ async function updateScores(score, player) {
     console.log(error.message);
   }
 }
-
+// getScores('alex');
 // findUser('Alex');
 module.exports = {
   inputPlayer,

@@ -74,7 +74,7 @@ class Game {
     this.player = await this.checkName();
     setInterval(() => {
       this.enemy.moveLeft();
-    }, 150);
+    }, 100);
     
     const interval = setInterval(() => {
       this.check();
