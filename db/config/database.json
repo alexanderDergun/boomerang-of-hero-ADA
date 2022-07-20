@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "boomerang",
+    "password": "8888",
+    "database": "boomerang",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

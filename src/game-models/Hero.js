@@ -1,13 +1,18 @@
 // Наш герой.
 
+const { updateScores, inputPlayer, findUser, getScores } = require('../database');
+const Boomerang = require('./Boomerang');
+
 class Hero {
-  constructor({ position }) {
+  constructor() {
     this.skin = '🤠'; // можете использовать любые emoji '💃'
-    this.position = position;
+    this.position = 1;
+    this.boomerang = new Boomerang();
   }
 
   moveLeft() {
     // Идём влево.
+
     this.position -= 1;
   }
 
@@ -21,11 +26,18 @@ class Hero {
     this.boomerang.fly();
   }
 
-  die() {
+  async die(name, score) {
     this.skin = '💀';
-    console.log('YOU ARE DEAD!💀');
+    if (await findUser(name)) {
+      if (score > await getScores(name)) await updateScores(score, name);
+    } else { await inputPlayer(name, score); }
+  
+    // console.log('')
+    console.log('ПОТРАЧЕНО! 💀');
+
     process.exit();
   }
+  // process.exit();
 }
 
 module.exports = Hero;

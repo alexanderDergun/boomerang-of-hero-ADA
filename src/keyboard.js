@@ -3,38 +3,41 @@
 // Главное не используй всё вместе!
 
 const keypress = require('keypress');
-
+// const Boomerang = require('./game-models/Boomerang');
 // Управление.
 // Настроим соответствия нажатий на клавиши и действий в игре.
+// console.log(hero);
 
-const keyboard = {
-  q: () => console.log('q'),
-  w: () => console.log('w'),
-  e: () => console.log('e'),
-  r: () => console.log('r'),
-  t: () => console.log('t'),
-  y: () => console.log('y'),
-};
-
-// Какая-то функция.
-
-function runInteractiveConsole() {
-  keypress(process.stdin);
-  process.stdin.on('keypress', (ch, key) => {
-    if (key) {
-      // Вызывает команду, соответствующую нажатой кнопке.
-      if (key.name in keyboard) {
-        keyboard[key.name]();
+class Keyboard {
+  constructor(hero) {
+    this.hero = hero;
+    this.keyboard = {
+      z: () => hero.moveLeft(),
+      x: () => hero.moveRight(),
+      space: () => {
+        this.hero.boomerang.boomerangFly = true;
+        this.hero.boomerang.position = this.hero.position;
+       return setInterval(() => this.hero.boomerang.fly(), 100)
       }
-      // Прерывание программы.
-      if (key.ctrl && key.name === 'c') {
-        process.exit();
+    };
+  }
+
+  runInteractiveConsole() {
+    keypress(process.stdin);
+    process.stdin.on('keypress', (ch, key) => {
+      if (key) {
+        // Вызывает команду, соответствующую нажатой кнопке.
+        if (key.name in this.keyboard) {
+          this.keyboard[key.name]();
+        }
+        // Прерывание программы.
+        if (key.ctrl && key.name === 'c') {
+          process.exit();
+        }
       }
-    }
-  });
-  process.stdin.setRawMode(true);
+    });
+    process.stdin.setRawMode(true);
+  }
 }
 
-// Давай попробуем запустить этот скрипт!
-
-runInteractiveConsole();
+module.exports = Keyboard;
